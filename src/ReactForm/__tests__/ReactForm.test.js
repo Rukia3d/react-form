@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactForm from './ReactForm';
+import ReactForm from '../index';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 
 afterEach(cleanup);
@@ -33,7 +33,7 @@ test('submitting the form', () => {
   inputGender.value = "1";
 
   fireEvent.click(getByText("Submit"));
-  
+
   expect(onSubmit.mock.calls.length).toBe(1);
   expect(onSubmit.mock.calls[0]).toEqual([output]);
 });

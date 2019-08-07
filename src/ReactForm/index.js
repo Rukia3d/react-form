@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Elements from "./Elements";
 
 const inputTypes = {
@@ -30,6 +29,7 @@ class ReactForm extends React.Component{
         )
       });
     }
+
     onSubmit(event){
       event.preventDefault();
       const result = this.form.reduce((f, i) => {
