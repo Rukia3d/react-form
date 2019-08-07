@@ -4,7 +4,7 @@ import Elements from "./Elements";
 
 const inputTypes = {
   text: Elements.Text,
-  date: Elements.Text,
+  date: Elements.DateOfBirth,
   gender: Elements.Text,
 }
 
