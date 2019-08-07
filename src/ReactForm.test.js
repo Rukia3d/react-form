@@ -14,18 +14,7 @@ let input = [
 let output = {
     name: "John Foo",
     dob: "1990-01-01",
-    gender: 1,
-    contact: [{
-        type: "mobile",
-        value: "0400123123"
-    },{
-        type: "home",
-        value: "610000000"
-    }],
-    guardian: {
-        name: "Jane Foo",
-        contact: "0400123123"
-    }
+    gender: "1",
 }
 
 
@@ -35,10 +24,16 @@ test('submitting the form', () => {
     <ReactForm input={ input } output={onSubmit}/>
   );
 
-  const testInput = getByLabelText("Data");
-  testInput.value = "data";
-  
+  const inputName = getByLabelText("Name");
+  inputName.value = "John Foo";
+
+  const inputDOB = getByLabelText("DOB");
+  inputDOB.value = "1990-01-01";
+
+  const inputGander = getByLabelText("Gender");
+  inputGander.value = "1";
+
   fireEvent.click(getByText("Submit"));
   expect(onSubmit.mock.calls.length).toBe(1);
-  expect(onSubmit.mock.calls[0]).toEqual(["data"]);
+  expect(onSubmit.mock.calls[0]).toEqual([output]);
 });
