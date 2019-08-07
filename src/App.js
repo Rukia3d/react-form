@@ -2,10 +2,16 @@ import React from 'react';
 import './App.css';
 import ReactForm from './ReactForm';
 
+let input = [
+  { name: "textForm" },
+  { dob: "textForm" },
+  { gender: "textForm" },
+]
+
 function App() {
   return (
     <div className="App">
-      <ReactForm />
+      <ReactForm input={input} onSubmit={data => window.alert(data)}/>
     </div>
   );
 }

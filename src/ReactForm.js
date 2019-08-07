@@ -8,7 +8,11 @@ class ReactForm extends React.Component{
 
     render(){
       return(
-        <h1>ReactForm</h1>
+        <form onSubmit={this.onSubmit}>
+          <label htmlFor="data">Data</label>
+          <input id="data" type="text"/>
+          <button>Submit</button>
+        </form>
       )
     }
 
