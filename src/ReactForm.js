@@ -4,6 +4,12 @@ import './App.css';
 class ReactForm extends React.Component{
     constructor(props){
       super(props);
+      this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    onSubmit(event){
+      event.preventDefault();
+      this.props.output(event.target.elements["data"].value);
     }
 
     render(){

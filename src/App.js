@@ -11,7 +11,7 @@ let input = [
 function App() {
   return (
     <div className="App">
-      <ReactForm input={input} onSubmit={data => window.alert(data)}/>
+      <ReactForm input={input} output={data => window.alert(data)}/>
     </div>
   );
 }

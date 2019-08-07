@@ -28,10 +28,11 @@ let output = {
     }
 }
 
+
 test('submitting the form', () => {
   const onSubmit = jest.fn();
   const { getByText } = render(
-    <ReactForm input={ input } onSubmit={onSubmit}/>
+    <ReactForm input={ input } output={onSubmit}/>
   );
 
   fireEvent.click(getByText("Submit"));
