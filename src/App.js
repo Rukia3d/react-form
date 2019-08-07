@@ -11,7 +11,7 @@ let input = [
 function App() {
   return (
     <div className="App">
-      <ReactForm input={JSON.stringify(input)} output={data => window.alert(data)}/>
+      <ReactForm input={JSON.stringify(input)} output={data => window.alert(JSON.stringify(data))}/>
     </div>
   );
 }
