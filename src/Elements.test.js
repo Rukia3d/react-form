@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Elements from './Elements';
 import { render, cleanup } from '@testing-library/react';
 
