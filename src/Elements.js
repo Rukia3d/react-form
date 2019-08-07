@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Text = ({ label, id }) => (
-  <input type="text" name={label} id={id} required pattern=" " />
+  <input type="text" name={label} id={id} required pattern="\S+ \S+.*" />
 )
 
 const MIN_AGE = 18
