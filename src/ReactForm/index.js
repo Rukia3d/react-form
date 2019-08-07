@@ -1,53 +1,31 @@
 import React from 'react';
-import Elements from "./Elements";
+import ReactForm from './ReactForm'
 
-const inputTypes = {
-  text: Elements.Text,
-  date: Elements.DateOfBirth,
-  gender: Elements.Gender,
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { error };
+  }
+
+  render() {
+    if (this.state.error) {
+      // You can render any custom fallback UI
+      return <h1>ReactForm errored</h1>;
+    }
+
+    return this.props.children;
+  }
 }
 
-class ReactForm extends React.Component{
-    constructor(props){
-      super(props);
-      this.form = JSON.parse(this.props.input);
-      this.onSubmit = this.onSubmit.bind(this);
-    }
+const WrappedForm = (props) => (
+  <ErrorBoundary>
+    <ReactForm {...props}/>
+  </ErrorBoundary>
+)
 
-    renderElement(i){
-      const Comp = inputTypes[i.type];
-      return <Comp {...i} />
-    }
-
-    renderForm(){
-      return this.form.map( i => {
-        return(
-          <div key={i.id}>
-          <label htmlFor={i.id}>{i.label}</label>
-          { this.renderElement(i) }
-          </div>
-        )
-      });
-    }
-
-    onSubmit(event){
-      event.preventDefault();
-      const result = this.form.reduce((f, i) => {
-        f[i.id] = event.target.elements[i.id].value;
-        return f;
-      }, {});
-      this.props.output(result);
-    }
-
-    render(){
-      return(
-        <form onSubmit={this.onSubmit}>
-          { this.renderForm() }
-          <button>Submit</button>
-        </form>
-      )
-    }
-
-}
-
-export default ReactForm;
+export default WrappedForm
