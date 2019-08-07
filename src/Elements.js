@@ -5,8 +5,10 @@ const Text = ({ label, id }) => (
 )
 
 const MIN_AGE = 18
-const DateOfBirth = ({ label, id }) => (
-  <h1>Some</h1>
-);
+const DateOfBirth = ({ label, id }) => {
+  const date = new Date();
+  date.setFullYear(date.getFullYear() - MIN_AGE);
+  return <input type="date" name={label} id={id} required max={date.toJSON().slice(0,10)} />
+};
 
-export default {Text, DateOfBirth}
+export default { Text, DateOfBirth }

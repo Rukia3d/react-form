@@ -28,7 +28,7 @@ test('correct DOB', () => {
   const { getByLabelText } = render(
     <div>
     <label htmlFor="dob">DOB</label>
-    <Elements.Text label="DOB" id="dob" />
+    <Elements.DateOfBirth label="DOB" id="dob" />
     </div>
   );
 
