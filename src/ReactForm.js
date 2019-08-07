@@ -4,16 +4,19 @@ import './App.css';
 class ReactForm extends React.Component{
     constructor(props){
       super(props);
+      this.form = JSON.parse(this.props.input);
       this.onSubmit = this.onSubmit.bind(this);
     }
 
-    renderForm(i){
-      return(
-        <div>
-        <label htmlFor={i.id}>{i.label}</label>
-        <input id={i.id} type={i.type}/>
-        </div>
-      )
+    renderForm(){
+      return this.form.map( i => {
+        return(
+          <div key={i.id}>
+          <label htmlFor={i.id}>{i.label}</label>
+          <input id={i.id} type={i.type}/>
+          </div>
+        )
+      });
     }
     onSubmit(event){
       event.preventDefault();
@@ -23,7 +26,7 @@ class ReactForm extends React.Component{
     render(){
       return(
         <form onSubmit={this.onSubmit}>
-          { this.renderForm(this.props.input[0]) }
+          { this.renderForm() }
           <button>Submit</button>
         </form>
       )
