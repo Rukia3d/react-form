@@ -3,9 +3,9 @@ import './App.css';
 import ReactForm from './ReactForm';
 
 let input = [
-  { name: "textForm" },
-  { dob: "textForm" },
-  { gender: "textForm" },
+  { id: "name", type: "textForm", label: "Name" },
+  // { id: "dob", type: "textForm", label: "DOB" },
+  // { id: "gender", type: "textForm", label: "Gender" },
 ]
 
 function App() {
