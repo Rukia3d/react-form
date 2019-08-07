@@ -5,7 +5,7 @@ import Elements from "./Elements";
 const inputTypes = {
   text: Elements.Text,
   date: Elements.DateOfBirth,
-  gender: Elements.Text,
+  gender: Elements.Gender,
 }
 
 class ReactForm extends React.Component{

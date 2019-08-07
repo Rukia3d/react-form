@@ -45,3 +45,19 @@ test('correct DOB', () => {
   inputDate.value = "2001-01-01";
   expect(inputDate.checkValidity()).toBe(true);
 });
+
+test('correct Gender', () => {
+  const { getByLabelText } = render(
+    <div>
+    <label htmlFor="gender">Gender</label>
+    <Elements.Gender label="Gender" id="gender" />
+    </div>
+  );
+
+  const inputGender = getByLabelText("Gender");
+  inputGender.value = "";
+  expect(inputGender.checkValidity()).toBe(false);
+
+  inputGender.value = "1";
+  expect(inputGender.checkValidity()).toBe(true);
+});

@@ -30,8 +30,8 @@ test('submitting the form', () => {
   const inputDOB = getByLabelText("DOB");
   inputDOB.value = "1990-01-01";
 
-  const inputGander = getByLabelText("Gender");
-  inputGander.value = "1";
+  const inputGender = getByLabelText("Gender");
+  inputGender.value = "1";
 
   fireEvent.click(getByText("Submit"));
   expect(onSubmit.mock.calls.length).toBe(1);

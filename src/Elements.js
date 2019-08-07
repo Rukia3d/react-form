@@ -11,4 +11,6 @@ const DateOfBirth = ({ label, id }) => {
   return <input type="date" name={label} id={id} required max={date.toJSON().slice(0,10)} />
 };
 
-export default { Text, DateOfBirth }
+const Gender  = ({ label, id }) => (<h1> Some </h1>);
+
+export default { Text, DateOfBirth, Gender }
