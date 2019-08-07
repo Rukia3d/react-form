@@ -1,62 +1,62 @@
 import React from 'react';
-import Elements from '../Elements';
 import { render, cleanup } from '@testing-library/react';
+import Elements from '../Elements';
 
 afterEach(cleanup);
 
 test('correct name', () => {
   const { getByLabelText } = render(
     <div>
-    <label htmlFor="name">Name</label>
-    <Elements.Text label="Name" id="name" />
-    </div>
+      <label htmlFor="name">Name</label>
+      <Elements.Text label="Name" id="name" />
+    </div>,
   );
 
-  const inputName = getByLabelText("Name");
-  inputName.value = "";
+  const inputName = getByLabelText('Name');
+  inputName.value = '';
   expect(inputName.checkValidity()).toBe(false);
 
-  inputName.value = "Joe";
+  inputName.value = 'Joe';
   expect(inputName.checkValidity()).toBe(false);
 
-  inputName.value = "Joe Doe";
+  inputName.value = 'Joe Doe';
   expect(inputName.checkValidity()).toBe(true);
 });
 
 test('correct DOB', () => {
   const { getByLabelText } = render(
     <div>
-    <label htmlFor="dob">DOB</label>
-    <Elements.DateOfBirth label="DOB" id="dob" />
-    </div>
+      <label htmlFor="dob">DOB</label>
+      <Elements.DateOfBirth label="DOB" id="dob" />
+    </div>,
   );
 
-  const inputDate = getByLabelText("DOB");
-  inputDate.value = "";
+  const inputDate = getByLabelText('DOB');
+  inputDate.value = '';
   expect(inputDate.checkValidity()).toBe(false);
 
-  inputDate.value = "Joe";
+  inputDate.value = 'Joe';
   expect(inputDate.checkValidity()).toBe(false);
 
-  inputDate.value = "2010-01-01";
+  inputDate.value = '2010-01-01';
   expect(inputDate.checkValidity()).toBe(false);
 
-  inputDate.value = "2001-01-01";
+  inputDate.value = '2001-01-01';
   expect(inputDate.checkValidity()).toBe(true);
 });
 
 test('correct Gender', () => {
   const { getByLabelText } = render(
     <div>
-    <label htmlFor="gender">Gender</label>
-    <Elements.Gender label="Gender" id="gender" />
-    </div>
+      <label htmlFor="gender">Gender</label>
+      <Elements.Gender label="Gender" id="gender" />
+    </div>,
   );
 
-  const inputGender = getByLabelText("Gender");
-  inputGender.value = "";
+  const inputGender = getByLabelText('Gender');
+  inputGender.value = '';
   expect(inputGender.checkValidity()).toBe(true);
 
-  inputGender.value = "1";
+  inputGender.value = '1';
   expect(inputGender.checkValidity()).toBe(true);
 });

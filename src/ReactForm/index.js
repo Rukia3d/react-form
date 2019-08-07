@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactForm from './ReactForm'
+import PropTypes from 'prop-types';
+import ReactForm from './ReactForm';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -8,24 +9,29 @@ class ErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
     return { error };
   }
 
   render() {
-    if (this.state.error) {
-      // You can render any custom fallback UI
-      return <h1>ReactForm errored</h1>;
+    const { error } = this.state;
+    const { children } = this.props;
+
+    if (error) {
+      return <h1 data-testid="errorMessage">ReactForm errored</h1>;
     }
 
-    return this.props.children;
+    return children;
   }
 }
 
-const WrappedForm = (props) => (
-  <ErrorBoundary>
-    <ReactForm {...props}/>
-  </ErrorBoundary>
-)
+ErrorBoundary.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
-export default WrappedForm
+const WrappedForm = props => (
+  <ErrorBoundary>
+    <ReactForm {...props} />
+  </ErrorBoundary>
+);
+
+export default WrappedForm;
