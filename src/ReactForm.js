@@ -20,7 +20,11 @@ class ReactForm extends React.Component{
     }
     onSubmit(event){
       event.preventDefault();
-      this.props.output(event.target.elements["name"].value);
+      const result = this.form.reduce((f, i) => {
+        f[i.id] = event.target.elements[i.id].value;
+        return f;
+      }, {});
+      this.props.output(result);
     }
 
     render(){
