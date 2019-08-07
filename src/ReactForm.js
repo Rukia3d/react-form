@@ -1,5 +1,12 @@
 import React from 'react';
 import './App.css';
+import Elements from "./Elements";
+
+const inputTypes = {
+  text: Elements.Text,
+  date: Elements.Text,
+  gender: Elements.Text,
+}
 
 class ReactForm extends React.Component{
     constructor(props){
@@ -8,12 +15,17 @@ class ReactForm extends React.Component{
       this.onSubmit = this.onSubmit.bind(this);
     }
 
+    renderElement(i){
+      const Comp = inputTypes[i.type];
+      return <Comp {...i} />
+    }
+
     renderForm(){
       return this.form.map( i => {
         return(
           <div key={i.id}>
           <label htmlFor={i.id}>{i.label}</label>
-          <input id={i.id} type={i.type}/>
+          { this.renderElement(i) }
           </div>
         )
       });
