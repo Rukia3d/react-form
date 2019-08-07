@@ -56,7 +56,7 @@ test('correct Gender', () => {
 
   const inputGender = getByLabelText("Gender");
   inputGender.value = "";
-  expect(inputGender.checkValidity()).toBe(false);
+  expect(inputGender.checkValidity()).toBe(true);
 
   inputGender.value = "1";
   expect(inputGender.checkValidity()).toBe(true);

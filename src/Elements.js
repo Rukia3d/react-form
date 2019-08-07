@@ -11,6 +11,12 @@ const DateOfBirth = ({ label, id }) => {
   return <input type="date" name={label} id={id} required max={date.toJSON().slice(0,10)} />
 };
 
-const Gender  = ({ label, id }) => (<h1> Some </h1>);
+const Gender  = ({ label, id }) => (
+  <select name={label} id={id}>
+  <option value="0">------</option>
+  <option value="1">Male</option>
+  <option value="2">Female</option>
+  </select>
+);
 
 export default { Text, DateOfBirth, Gender }
