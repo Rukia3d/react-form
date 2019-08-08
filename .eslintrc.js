@@ -10,7 +10,8 @@ module.exports = {
 			"react/jsx-filename-extension": [0],
 			"jsx-a11y/label-has-associated-control": [0],
 			"jsx-a11y/label-has-for": [0],
-			"no-alert": [0]
+			"no-alert": [0],
+			"react/button-has-type": [0]
     },
     "env": {
     	"browser": true,
