@@ -6,6 +6,7 @@ const inputTypes = {
   text: Elements.Text,
   date: Elements.DateOfBirth,
   gender: Elements.Gender,
+  contact: Elements.Contacts,
 };
 
 function renderElement(i) {
@@ -44,7 +45,7 @@ class ReactForm extends React.Component {
     return (
       <form onSubmit={this.onSubmit}>
         { this.renderForm() }
-        <button type="button">Submit</button>
+        <button>Submit</button>
       </form>
     );
   }

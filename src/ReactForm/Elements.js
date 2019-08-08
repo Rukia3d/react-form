@@ -35,5 +35,9 @@ Gender.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
+const Contacts = () => <button>Add Contact</button>;
 
-export default { Text, DateOfBirth, Gender };
+
+export default {
+  Text, DateOfBirth, Gender, Contacts,
+};

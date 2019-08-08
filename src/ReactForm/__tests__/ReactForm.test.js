@@ -8,12 +8,20 @@ const input = [
   { id: 'name', type: 'text', label: 'Name' },
   { id: 'dob', type: 'date', label: 'DOB' },
   { id: 'gender', type: 'gender', label: 'Gender' },
+  { id: 'contact', type: 'contact', label: 'Contact' },
 ];
 
 const output = {
   name: 'John Foo',
   dob: '1990-01-01',
   gender: '1',
+  contact: [{
+    type: 'mobile',
+    value: '0400123123',
+  }, {
+    type: 'home',
+    value: '610000000',
+  }],
 };
 
 
@@ -36,4 +44,14 @@ test('submitting the form', () => {
 
   expect(onSubmit.mock.calls.length).toBe(1);
   expect(onSubmit.mock.calls[0]).toEqual([output]);
+});
+
+test.only('adding contact', () => {
+  const onSubmit = jest.fn();
+  const { getByText } = render(
+    <ReactForm input={JSON.stringify(input)} output={onSubmit} />,
+  );
+
+  const labelContact = getByText('Add Contact');
+  expect(labelContact).toBeTruthy();
 });
