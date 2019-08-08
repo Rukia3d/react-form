@@ -48,10 +48,22 @@ test('submitting the form', () => {
 
 test.only('adding contact', () => {
   const onSubmit = jest.fn();
-  const { getByText } = render(
+  const { getByText, getByLabelText } = render(
     <ReactForm input={JSON.stringify(input)} output={onSubmit} />,
   );
 
-  const labelContact = getByText('Add Contact');
-  expect(labelContact).toBeTruthy();
+  const buttonContact = getByText('Add Contact');
+  expect(buttonContact).toBeTruthy();
+
+  fireEvent.click(buttonContact);
+
+  const inputType = getByLabelText('Type');
+  inputType.value = 'home';
+
+  const inputPhone = getByLabelText('Phone');
+  inputPhone.value = '123456';
+
+  fireEvent.click(getByText('Submit'));
+  expect(onSubmit.mock.calls.length).toBe(1);
+  expect(onSubmit.mock.calls[0]).toEqual([output]);
 });

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const uuidv1 = require('uuid/v1');
+
 const Text = ({ label, id }) => (
   <input type="text" name={label} id={id} required pattern="\S+ \S+.*" />
 );
@@ -35,7 +37,49 @@ Gender.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-const Contacts = () => <button>Add Contact</button>;
+class Contacts extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contacts: [],
+    };
+    this.addContact = this.addContact.bind(this);
+  }
+
+  addContact(event) {
+    event.preventDefault();
+    this.setState({
+      contacts: this.state.contacts.concat({ id: uuidv1() }),
+    });
+  }
+
+  renderContacts() {
+    return (
+      this.state.contacts.map(c => (
+        <div key={c.id}>
+          <label htmlFor={`type-${c.id}`}>Type</label>
+          <select name="type" id={`type-${c.id}`}>
+            <option value="home">Home</option>
+            <option value="work">Work</option>
+          </select>
+
+          <label htmlFor={`phone-${c.id}`}>Phone</label>
+          <input type="text" name="phone" id={`phone-${c.id}`} />
+        </div>
+      ))
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        {this.renderContacts()}
+        <button onClick={this.addContact}>Add Contact</button>
+      </div>
+
+    );
+  }
+}
 
 
 export default {

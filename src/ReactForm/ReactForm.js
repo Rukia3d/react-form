@@ -26,7 +26,8 @@ class ReactForm extends React.Component {
     event.preventDefault();
     const { output } = this.props;
     const result = this.form.reduce(
-      (f, i) => Object.assign(f, { [i.id]: event.target.elements[i.id].value }),
+      (f, i) => console.log(i)
+      || Object.assign(f, { [i.id]: event.target.elements[i.id].value }),
       {},
     );
     output(result);
