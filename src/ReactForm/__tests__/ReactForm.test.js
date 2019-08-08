@@ -16,9 +16,6 @@ const output = {
   dob: '1990-01-01',
   gender: '1',
   contact: [{
-    type: 'mobile',
-    value: '0400123123',
-  }, {
     type: 'home',
     value: '610000000',
   }],
@@ -32,25 +29,13 @@ test('submitting the form', () => {
   );
 
   const inputName = getByLabelText('Name');
-  inputName.value = 'John Foo';
+  fireEvent.change(inputName, { target: { value: 'John Foo' } });
 
   const inputDOB = getByLabelText('DOB');
-  inputDOB.value = '1990-01-01';
+  fireEvent.change(inputDOB, { target: { value: '1990-01-01' } });
 
   const inputGender = getByLabelText('Gender');
-  inputGender.value = '1';
-
-  fireEvent.click(getByText('Submit'));
-
-  expect(onSubmit.mock.calls.length).toBe(1);
-  expect(onSubmit.mock.calls[0]).toEqual([output]);
-});
-
-test.only('adding contact', () => {
-  const onSubmit = jest.fn();
-  const { getByText, getByLabelText } = render(
-    <ReactForm input={JSON.stringify(input)} output={onSubmit} />,
-  );
+  fireEvent.change(inputGender, { target: { value: '1' } });
 
   const buttonContact = getByText('Add Contact');
   expect(buttonContact).toBeTruthy();
@@ -58,12 +43,13 @@ test.only('adding contact', () => {
   fireEvent.click(buttonContact);
 
   const inputType = getByLabelText('Type');
-  inputType.value = 'home';
+  fireEvent.change(inputType, { target: { value: 'home' } });
 
   const inputPhone = getByLabelText('Phone');
-  inputPhone.value = '123456';
+  fireEvent.change(inputPhone, { target: { value: '610000000' } });
 
   fireEvent.click(getByText('Submit'));
+
   expect(onSubmit.mock.calls.length).toBe(1);
   expect(onSubmit.mock.calls[0]).toEqual([output]);
 });

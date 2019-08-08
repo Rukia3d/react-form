@@ -8,7 +8,7 @@ test('correct name', () => {
   const { getByLabelText } = render(
     <div>
       <label htmlFor="name">Name</label>
-      <Elements.Text label="Name" id="name" />
+      <Elements.Text label="Name" id="name" updateData={jest.fn()} />
     </div>,
   );
 
@@ -27,7 +27,7 @@ test('correct DOB', () => {
   const { getByLabelText } = render(
     <div>
       <label htmlFor="dob">DOB</label>
-      <Elements.DateOfBirth label="DOB" id="dob" />
+      <Elements.DateOfBirth label="DOB" id="dob" updateData={jest.fn()} />
     </div>,
   );
 
@@ -49,7 +49,7 @@ test('correct Gender', () => {
   const { getByLabelText } = render(
     <div>
       <label htmlFor="gender">Gender</label>
-      <Elements.Gender label="Gender" id="gender" />
+      <Elements.Gender label="Gender" id="gender" updateData={jest.fn()} />
     </div>,
   );
 

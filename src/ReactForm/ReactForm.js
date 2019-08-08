@@ -9,35 +9,42 @@ const inputTypes = {
   contact: Elements.Contacts,
 };
 
-function renderElement(i) {
-  const Comp = inputTypes[i.type];
-  return <Comp {...i} />;
-}
-
 class ReactForm extends React.Component {
   constructor(props) {
     super(props);
     const { input } = this.props;
+    this.state = {
+      data: {},
+    };
     this.form = JSON.parse(input);
     this.onSubmit = this.onSubmit.bind(this);
+    this.updateData = this.updateData.bind(this);
   }
 
   onSubmit(event) {
     event.preventDefault();
     const { output } = this.props;
-    const result = this.form.reduce(
-      (f, i) => console.log(i)
-      || Object.assign(f, { [i.id]: event.target.elements[i.id].value }),
-      {},
-    );
-    output(result);
+    const { data } = this.state;
+    output(data);
+  }
+
+  updateData(key, value) {
+    const { data } = this.state;
+    this.setState({
+      data: Object.assign({}, data, { [key]: value }),
+    });
+  }
+
+  renderElement(i) {
+    const Comp = inputTypes[i.type];
+    return <Comp {...i} updateData={this.updateData} />;
   }
 
   renderForm() {
     return this.form.map(i => (
       <div key={i.id}>
         <label htmlFor={i.id}>{i.label}</label>
-        { renderElement(i) }
+        { this.renderElement(i) }
       </div>
     ));
   }
