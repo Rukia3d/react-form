@@ -1,3 +1,14 @@
+# ReactForm
+
+ReactForm component itself, and its documentation is available here:
+
+https://github.com/Rukia3d/react-form/tree/master/src/ReactForm
+
+[App.js](https://github.com/Rukia3d/react-form/blob/master/src/App.js) demonstrates its usage, based on the sample output given in the task.
+Form submission data is shown via `window.alert`.
+
+# create-react-app
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
