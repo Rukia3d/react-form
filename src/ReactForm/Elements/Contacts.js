@@ -66,6 +66,7 @@ class Contacts extends React.Component {
             name="value"
             id={`phone-${c.id}`}
             value={c.value}
+            required
             onChange={event => this.updateContact(c.id, 'value', event.target.value)}
           />
         </div>
