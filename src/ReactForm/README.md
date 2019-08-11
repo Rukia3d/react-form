@@ -46,22 +46,30 @@ definition is an object with the following required keys:
 
 ### Name
 Person's name, at least 2 words.
+
 Input example: `{ id: 'name', type: 'name', label: 'Name' }`
+
 Output example: `name: 'John Foo'`
 
 ### Date
 Person's date of birth, minimum 18 years old.
+
 Input example: ` { id: 'dob', type: 'date', label: 'DOB' }`
+
 Output example: `dob: '1990-01-01'`
 
 ### Gender
 Optional person's gender 1 - male, 2-female
+
 Input example:  `{ id: 'gender', type: 'gender', label: 'Gender' }`
+
 Output example: `gender: 1`
 
 ### Contact
 Array of contact information each element is an object with a type and phone keys.
+
 Input example: `{ id: 'contact', type: 'contact', label: 'Contact' }`
+
 Output example:  
 
 ```
