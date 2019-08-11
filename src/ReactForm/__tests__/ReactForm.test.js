@@ -14,7 +14,7 @@ const input = [
 const output = {
   name: 'John Foo',
   dob: '1990-01-01',
-  gender: '1',
+  gender: 1,
   contact: [{
     type: 'home',
     value: '610000000',
@@ -35,7 +35,7 @@ test('submitting the form', () => {
   fireEvent.change(inputDOB, { target: { value: '1990-01-01' } });
 
   const inputGender = getByLabelText('Gender');
-  fireEvent.change(inputGender, { target: { value: '1' } });
+  fireEvent.change(inputGender, { target: { value: 1 } });
 
   const buttonContact = getByText('Add Contact');
   expect(buttonContact).toBeTruthy();

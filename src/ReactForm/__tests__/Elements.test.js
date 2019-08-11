@@ -57,6 +57,6 @@ test('correct Gender', () => {
   inputGender.value = '';
   expect(inputGender.checkValidity()).toBe(true);
 
-  inputGender.value = '1';
+  inputGender.value = 1;
   expect(inputGender.checkValidity()).toBe(true);
 });
