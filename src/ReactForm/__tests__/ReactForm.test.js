@@ -5,7 +5,7 @@ import ReactForm from '../ReactForm';
 afterEach(cleanup);
 
 const input = [
-  { id: 'name', type: 'text', label: 'Name' },
+  { id: 'name', type: 'name', label: 'Name' },
   { id: 'dob', type: 'date', label: 'DOB' },
   { id: 'gender', type: 'gender', label: 'Gender' },
   { id: 'contact', type: 'contact', label: 'Contact' },

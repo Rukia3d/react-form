@@ -8,7 +8,7 @@ test('correct name', () => {
   const { getByLabelText } = render(
     <div>
       <label htmlFor="name">Name</label>
-      <Elements.Text label="Name" id="name" updateData={jest.fn()} />
+      <Elements.Name label="Name" id="name" updateData={jest.fn()} />
     </div>,
   );
 

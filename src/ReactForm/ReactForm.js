@@ -2,12 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Elements from './Elements';
 
+// Render correct Component based on type
 const inputTypes = {
-  text: Elements.Text,
+  name: Elements.Name,
   date: Elements.DateOfBirth,
   gender: Elements.Gender,
   contact: Elements.Contacts,
 };
+
+/*
+REACT FORM - Renders the set of inputs.
+Based on schema received as input prop.
+*/
 
 class ReactForm extends React.Component {
   constructor(props) {
@@ -28,6 +34,7 @@ class ReactForm extends React.Component {
     output(data);
   }
 
+  // Updates the state with data received from form Elements
   updateData(key, value) {
     const { data } = this.state;
     this.setState({
