@@ -74,9 +74,10 @@ class Contacts extends React.Component {
   }
 
   render() {
+    const { contacts } = this.state;
     return (
-      <div>
-        {this.renderContacts()}
+      <div className="contacts">
+        {contacts.length > 0 ? this.renderContacts() : <i>no contacts</i>}
         <button onClick={this.addContact}>Add Contact</button>
       </div>
     );

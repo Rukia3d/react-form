@@ -60,7 +60,7 @@ class ReactForm extends React.Component {
     return (
       <form onSubmit={this.onSubmit}>
         { this.renderForm() }
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     );
   }
