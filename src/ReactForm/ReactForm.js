@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Elements from './Elements';
+import withJSONInput from './withJSONInput';
 
 // Render correct Component based on type
 const inputTypes = {
@@ -18,11 +19,9 @@ Based on schema received as input prop.
 class ReactForm extends React.Component {
   constructor(props) {
     super(props);
-    const { input } = this.props;
     this.state = {
       data: {},
     };
-    this.form = JSON.parse(input);
     this.onSubmit = this.onSubmit.bind(this);
     this.updateData = this.updateData.bind(this);
   }
@@ -48,7 +47,8 @@ class ReactForm extends React.Component {
   }
 
   renderForm() {
-    return this.form.map(i => (
+    const { input } = this.props;
+    return input.map(i => (
       <div key={i.id}>
         <label htmlFor={i.id}>{i.label}</label>
         { this.renderElement(i) }
@@ -66,10 +66,16 @@ class ReactForm extends React.Component {
   }
 }
 
+const formElementShape = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+});
+
 ReactForm.propTypes = {
   output: PropTypes.func.isRequired,
-  input: PropTypes.node.isRequired,
+  input: PropTypes.arrayOf(formElementShape).isRequired,
 };
 
 
-export default ReactForm;
+export default withJSONInput(ReactForm);
