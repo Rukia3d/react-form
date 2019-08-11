@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 
 const uuidv1 = require('uuid/v1');
 
+// Export given array of contacts as only an array of type value pair
+function exportContacts(contacts) {
+  return contacts.map(({ type, value }) => ({ type, value }));
+}
+
 /*
 Contacts form allows user to add any munber of phone numbers with type and value.
 */
@@ -16,16 +21,12 @@ class Contacts extends React.Component {
     this.updateContact = this.updateContact.bind(this);
   }
 
-  // TODO extract update data into a separate dpcumented function
   setContacts(newContacts) {
     const { updateData } = this.props;
 
     this.setState(
       { contacts: newContacts },
-      () => updateData(
-        'contact',
-        newContacts.map(({ type, value }) => ({ type, value })),
-      ),
+      () => updateData('contact', exportContacts(newContacts)),
     );
   }
 
